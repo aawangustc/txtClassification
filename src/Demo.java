@@ -110,10 +110,10 @@ public class Demo {
 		
 	}
 	
-	public static void main (String args[]) {
-		runTrainAndTest();
+	//public static void main (String args[]) {
+	//	runTrainAndTest();
 //		  runLoadModelAndUse();
 		// AddFilesManuallyAndTrain();
-	}
+	//}
 	
 }
