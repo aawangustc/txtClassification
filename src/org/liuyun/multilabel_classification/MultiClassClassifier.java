@@ -14,13 +14,14 @@ public class MultiClassClassifier {
 	public ArrayList<LabelInfo> LoadData(String dataPath)
 	{
 		ArrayList<LabelInfo> labelList = new ArrayList<LabelInfo>();
-		LabelInfo tmp = new LabelInfo();
+		
 		File path=new File(dataPath);
 		File[] fileList = path.listFiles();
 		for (File f : fileList) {
+			LabelInfo tmp = new LabelInfo();
 			tmp.trainDataPath = f.getAbsolutePath();
 			tmp.labelName = f.getName();
-			labelList.add(tmp);
+			labelList.add(tmp);			
 		}		
 		return labelList;		
 	}

@@ -8,7 +8,7 @@ public class SingleClassClassifer implements IBasicClassifier {
 
 	@Override
 	public int train(String trainDataPath,String modelPath) {
-		// TODO Auto-generated method stub
+		
 		// 新建分类器对象
 		BasicTextClassifier classifier = new BasicTextClassifier();
 		
@@ -27,7 +27,7 @@ public class SingleClassClassifer implements IBasicClassifier {
 
 	@Override
 	public String predict(String testData, String modelPath) {
-		// TODO Auto-generated method stub
+
 		BasicTextClassifier classifier = new BasicTextClassifier();
 		
 		// 设置分类种类，并读取模型
