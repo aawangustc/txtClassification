@@ -33,7 +33,7 @@ public class SingleClassClassifer implements IBasicClassifier {
 		// 设置分类种类，并读取模型
 		classifier.loadCategoryListFromFile(modelPath+"/category");
 		classifier.setTextClassifier(new LinearBigramChineseTextClassifier(classifier.getCategorySize()));
-		classifier.getTextClassifier().loadModel("modelPath");
+		classifier.getTextClassifier().loadModel(modelPath);
 		
 		//对字符串进行分类
 		ClassifyResult[] result = classifier.classifyText(testData,1);

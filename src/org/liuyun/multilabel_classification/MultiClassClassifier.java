@@ -1,7 +1,19 @@
 package org.liuyun.multilabel_classification;
+import java.io.BufferedReader;
+import java.io.Console;
 import java.io.File;
-
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import javax.xml.transform.Templates;
+
+import org.apache.commons.lang.ObjectUtils.Null;
 
 
 public class MultiClassClassifier {
@@ -35,8 +47,46 @@ public class MultiClassClassifier {
 		return modelPath;
 		
 	}
-	public static void main (String args[]) {
+	public String MultiLabelPredict(String testDataPath,String modelPath) throws IOException, FileNotFoundException
+	{
+		String result = new String();
+		//读取文档数据
+		
+
+		
+		
+		
+		
+		String encoding = "utf-8";
+		File testFile = new File(testDataPath);
+		InputStreamReader read = new InputStreamReader(new FileInputStream(testFile),encoding);
+		BufferedReader bufferedReader = new BufferedReader(read);
+		String txt = new String();
+		String t = null;
+		while ((t = bufferedReader.readLine())!=null) {
+			txt += t;			
+		}
+		
+		//加载模型合集
+		File modelPathInfo=new File(modelPath);
+		File[] modelList = modelPathInfo.listFiles();
+		
+		for (File model : modelList) {
+			
+			SingleClassClassifer sc = new SingleClassClassifer();
+			
+			if(sc.predict(txt.trim(), model.getAbsolutePath()).equals("1"))
+			{
+				result+=model.getName();
+			}
+		}		
+		return result;
+	}
+	public static void main (String args[])throws IOException, FileNotFoundException {
 		MultiClassClassifier myClassifier = new MultiClassClassifier();
-		myClassifier.MultiLabelTrain("/home/aa/文档/THUCNews/test/test", "/home/aa/文档/THUCNews/test/test");
+		//myClassifier.MultiLabelTrain("/home/aa/文档/THUCNews/test/test", "/home/aa/文档/THUCNews/test/result");
+		String labels =new String();
+		labels = myClassifier.MultiLabelPredict("/home/aa/文档/THUCNews/test/test/798977.txt", "/home/aa/文档/THUCNews/test/result");
+		System.out.println("多类分标签为："+labels.trim());
 	}
 }
