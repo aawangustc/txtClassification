@@ -50,11 +50,7 @@ public class MultiClassClassifier {
 	public String MultiLabelPredict(String testDataPath,String modelPath) throws IOException, FileNotFoundException
 	{
 		String result = new String();
-		//读取文档数据
-		
-
-		
-		
+		//读取文档数据	
 		
 		
 		String encoding = "utf-8";
@@ -84,9 +80,32 @@ public class MultiClassClassifier {
 	}
 	public static void main (String args[])throws IOException, FileNotFoundException {
 		MultiClassClassifier myClassifier = new MultiClassClassifier();
-		//myClassifier.MultiLabelTrain("/home/aa/文档/THUCNews/test/test", "/home/aa/文档/THUCNews/test/result");
-		String labels =new String();
-		labels = myClassifier.MultiLabelPredict("/home/aa/文档/THUCNews/test/test/798977.txt", "/home/aa/文档/THUCNews/test/result");
-		System.out.println("多类分标签为："+labels.trim());
+	//	myClassifier.MultiLabelTrain("C:\\Users\\AA\\git\\txtClassification\\testdata\\train", "C:\\Users\\AA\\git\\txtClassification\\testdata\\result");
+		
+		//测试结果
+		File testPathInfo=new File("C:\\Users\\AA\\git\\txtClassification\\testdata\\test");
+		File[] testClassList = testPathInfo.listFiles();
+		int i=0;
+		int j=0;
+		for (File testClass : testClassList)
+		{
+			File[] testList = testClass.listFiles();
+			String trueLabel = testClass.getName();
+			for (File txt : testList)
+			{
+				String labels =new String();
+				labels = myClassifier.MultiLabelPredict(txt.getAbsolutePath(), "C:\\Users\\AA\\git\\txtClassification\\testdata\\result");
+				if (labels.equals(trueLabel))
+					{i++;j++;}
+			}			
+			System.out.println(trueLabel+"正确个数为：");
+			System.out.println(j);
+			j=0;
+		}
+		
+		//String labels =new String();
+		//labels = myClassifier.MultiLabelPredict("/home/aa/文档/THUCNews/test/test/798977.txt", "/home/aa/文档/THUCNews/test/result");
+		System.out.println("正确个数为：");
+		System.out.println(i);
 	}
 }

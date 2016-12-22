@@ -283,12 +283,12 @@ public class BasicTextClassifier{
 		}
 		
 		categoryToInt.clear();
-		System.out.println("--------------------------------\nCategory List:");
+		//System.out.println("--------------------------------\nCategory List:");
 		for (int i = 0; i < categoryList.size(); ++i) {
 			categoryToInt.put(categoryList.get(i), i);
-			System.out.println(i + "\t\t" + categoryList.get(i));
+			//System.out.println(i + "\t\t" + categoryList.get(i));
 		}
-		System.out.println("--------------------------------");
+		//System.out.println("--------------------------------");
 		
 		return true;
 	}

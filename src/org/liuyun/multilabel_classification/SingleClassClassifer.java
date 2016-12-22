@@ -15,8 +15,8 @@ public class SingleClassClassifer implements IBasicClassifier {
 		// 设置参数
 		String defaultArguments = ""
 			 + "-train " +trainDataPath   // 设置您的训练路径，这里的路径只是给出样例
-			 + " -d1 0.5 "  // 前50%用于训练
-			 + "-f 35000 " // 设置保留特征数，可以自行调节以优化性能
+			 + " -d1 0.99 "  // 前50%用于训练
+			 + "-f 50000 " // 设置保留特征数，可以自行调节以优化性能
 			+  "-s " +modelPath // 将训练好的模型保存在硬盘上，便于以后测试或部署时直接读取模型，无需训练
 			 ;		
 		// 初始化

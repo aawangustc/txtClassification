@@ -679,12 +679,12 @@ public abstract class LiblinearTextClassifier implements TextClassifier{
 		File lexiconFile = new File( modelPath, "lexicon");
 		File modelFile = new File( modelPath, "model");
 		
-		System.out.println(lexiconFile.getAbsolutePath());
+		//System.out.println(lexiconFile.getAbsolutePath());
 		
 		try { 
 			if ( lexiconFile.exists() ) {
 				lexicon.loadFromFile(lexiconFile);
-				System.out.println("lexicon exists!");
+				//System.out.println("lexicon exists!");
 			} else {
 				return false;
 			}
@@ -692,7 +692,7 @@ public abstract class LiblinearTextClassifier implements TextClassifier{
 			if ( modelFile.exists() ) {
 				//this.model = svm.svm_load_model(modelFile.getAbsolutePath());
 				//this.lmodel = de.bwaldvogel.liblinear.Linear.loadModel(new File(modelFile.getAbsolutePath()));
-				System.out.println("model exists!");
+				//System.out.println("model exists!");
 				this.lmodel = de.bwaldvogel.liblinear.Linear.loadModel(modelFile);
 			} else {
 				return false;
